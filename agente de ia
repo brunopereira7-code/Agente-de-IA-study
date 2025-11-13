@@ -16,7 +16,14 @@ objetivo = st.text_area("Objetivo (opcional)", placeholder="Ex.: entender concei
 mostrar_gabarito = st.toggle("Gerar e mostrar gabarito (respostas + justificativas)", value=True)
 
 executar = st.button("Gerar material")
-api_key = 'SUA_CHAVE_API'
+api_key = 'SUA_CHAVE_API' 
+
+#if "GROQ_API_KEY" not in st.secrets:
+    #st.error("Erro: A GROQ_API_KEY não foi configurada nos 'Secrets' do Streamlit.")
+    #st.info("Por favor, crie um arquivo .streamlit/secrets.toml e adicione sua chave: \n\nGROQ_API_KEY = 'sua_chave_gsk_...'")
+    #st.stop()
+
+api_key = st.secrets["GROQ_API_KEY"]
 
 if executar:
     if not api_key or not tema:
